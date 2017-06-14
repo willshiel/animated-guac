@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', RedirectView.as_view(url='polls/', permanent=False), name='index')
+    url(r'^login/', include('registration.urls')),
+    url(r'^accounts/', include('accounts.urls')),
+    url(r'^home/', include('home.urls')),
 ]

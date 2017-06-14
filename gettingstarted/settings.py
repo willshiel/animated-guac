@@ -31,7 +31,8 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = (
-    'polls.apps.PollsConfig',
+    'registration.apps.RegistrationConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -104,6 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Account Profile
+
+AUTH_PROFILE_MODULE = 'account.UserProfile'
+LOGIN_REDIRECT_URL = 'home'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
