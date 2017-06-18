@@ -33,6 +33,7 @@ DEBUG = True
 INSTALLED_APPS = (
     'registration.apps.RegistrationConfig',
     'accounts.apps.AccountsConfig',
+    'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'gettingstarted.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'staticfiles')],
         'APP_DIRS': True,
         'OPTIONS': {
             'debug': True,
@@ -109,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Account Profile
 
 AUTH_PROFILE_MODULE = 'account.UserProfile'
-LOGIN_REDIRECT_URL = 'home'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -139,7 +139,7 @@ STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(BASE_DIR, 'staticfiles'),
 )
 
 # Simplified static file serving.

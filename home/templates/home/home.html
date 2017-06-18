@@ -1,1 +1,15 @@
-<h1>This is the home page</h1>
+<h1>Welcome {{ user.first_name }}</h1>
+
+<h2>Your next game is against {{ user.first_name }}</h2>
+
+<table>
+    <caption>Standings</caption>
+    <tr>
+        <th>Place</th>
+        <th>Record</th>
+    </tr>
+    <tr>
+        <td>{{ user_profile.place }}</td>
+        <td>{{ user_profile.record }}</td>
+    </tr>
+</table>
