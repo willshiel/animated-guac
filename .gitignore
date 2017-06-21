@@ -2,4 +2,7 @@ venv
 *.pyc
 staticfiles
 .env
-db.sqlite3
+app.json
+settings.py
+
+.idea/inspectionProfiles/
