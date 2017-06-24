@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from .forms import MyUserCreationForm
 from django.contrib.auth import logout
 
@@ -18,4 +18,4 @@ def register(request):
 
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect('/registration/logout/')
+    return render(request, 'registration/logout.html')
