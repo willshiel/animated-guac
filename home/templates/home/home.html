@@ -1,15 +1,23 @@
 <h1>Welcome {{ user.first_name }}</h1>
 
-<h2>Your next game is against {{ user.first_name }}</h2>
+<p>Your next game is against {{ user.first_name }}</p>
 
-<table>
-    <caption>Standings</caption>
+<hr/>
+<table border="1">
     <tr>
-        <th>Place</th>
-        <th>Record</th>
+        <th>Home Team</th>
+        <th>Away Team</th>
     </tr>
     <tr>
-        <td>{{ user_profile.place }}</td>
-        <td>{{ user_profile.record }}</td>
+        <td>
+            <label for="arsenal">Arsenal</label>
+            <input type="radio" id="arsenal" value="Arsenal">
+        </td>
+        <td>
+            <label for="leicester">Leicester</label>
+            <input type="radio" id="leicester" value="Arsenal">
+        </td>
     </tr>
 </table>
+<hr/>
+<a href="/registration/logout">Log out</a>

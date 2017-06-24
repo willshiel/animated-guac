@@ -5,6 +5,6 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^registration/', include('registration.urls')),
-    url(r'^accounts/', include('accounts.urls')),
     url(r'^home/', include('home.urls')),
+    url(r'^$', RedirectView.as_view(url='/registration/login', permanent=True)),
 ]
