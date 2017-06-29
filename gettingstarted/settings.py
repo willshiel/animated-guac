@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'registration.apps.RegistrationConfig',
     'accounts.apps.AccountsConfig',
     'home.apps.HomeConfig',
+    'picks.apps.PicksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
