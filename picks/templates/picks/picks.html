@@ -1,4 +1,15 @@
-{% for g in game %}
-    {{ g.home_team_id }} vs {{ g.away_team_id }}
-    {{ home_team.name }}
-{% endfor %}
+<h1>Make Your Picks!</h1>
+<form method="post">
+    {% csrf_token %}
+    {% for g in game %}
+        <ul>
+            <p>Game {{ forloop.counter }}</p>
+            <ul>
+                <li>{{ g.home_team_name }} vs {{ g.away_team_name }}
+                <p>{{ form.team_picked }}</p>
+                </li>
+            </ul>
+        </ul>
+        <input type="submit" value="Submit" />
+    {% endfor %}
+</form>
