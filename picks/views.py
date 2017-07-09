@@ -13,14 +13,10 @@ def get_picks(request):
         form = PickForm(request.POST, user_id=request.user.id, matchweek=datetime.now()
                         , home_team=g.home_team_name, away_team=g.away_team_name
                         )
-        pdb.set_trace()
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            pdb.set_trace()
             return HttpResponseRedirect('/home/')
-        else:
-            print 'hello'
 
     else:
         form = PickForm()
