@@ -32,6 +32,6 @@ class Game(models.Model):
 
 class Pick(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    team_picked = models.ForeignKey(Team, on_delete=models.CASCADE, null=True)
+    team_picked = models.CharField(max_length=50, null=True)
     is_correct = models.NullBooleanField()
     matchweek = models.DateTimeField()

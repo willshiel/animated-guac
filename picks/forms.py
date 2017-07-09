@@ -7,11 +7,10 @@ class PickForm(forms.ModelForm):
         selected game
     '''
     error_messages = {
-        'no_match': ('One of the selections does not match one of the options')
+        'no_match': ('Your selections do not match the corresponding options')
     }
 
-    teams = []
-    team_picked = forms.ChoiceField(teams, label=('team_picked'))
+    team_picked = forms.CharField(label=('Your choice'))
 
     class Meta:
         model = Pick
@@ -22,15 +21,13 @@ class PickForm(forms.ModelForm):
         self.matchweek = kwargs.pop('matchweek', None)
         self.home_team = kwargs.pop('home_team', None)
         self.away_team = kwargs.pop('away_team', None)
-        self.teams.append(self.home_team)
-        self.teams.append(self.away_team)
         super(PickForm, self).__init__(*args, **kwargs)
 
     def clean_team_picked(self):
         team_picked = self.cleaned_data['team_picked']
-        if(team_picked == self.home_team_name):
+        if(team_picked == self.home_team):
             return team_picked
-        elif(team_picked == self.away_team_name):
+        elif(team_picked == self.away_team):
             return team_picked
         else:
             raise forms.ValidationError(
