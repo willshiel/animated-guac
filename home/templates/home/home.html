@@ -1,8 +1,27 @@
 <h1>Welcome {{ user.first_name }}</h1>
 
-<p>Your next game is against {{ user.first_name }}</p>
+<p>Welcome to: {{ league.name }}</p>
 
 <hr/>
 <a href='/picks/picks'>Make Picks</a>
+<hr/>
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Name</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Ties</th>
+    </tr>
+     {% for p in profiles %}
+    <tr>
+        <td>{{ p.record.place }}</td>
+        <td>{{ p.user.first_name }}</td>
+        <td>{{ p.record.wins }}</td>
+        <td>{{ p.record.losses }}</td>
+        <td>{{ p.record.ties }}</td>
+    </tr>
+    {% endfor %}
+</table>
 <hr/>
 <a href="/registration/logout">Log out</a>

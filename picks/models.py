@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from datetime import datetime
 
-# default for team name fields and matchweek
 def team_name_default():
     return {'name', 'place holder name'}
 
