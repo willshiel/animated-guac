@@ -4,13 +4,11 @@ from home.models import Profile
 from .forms import PickForm
 from django.http import HttpResponseRedirect
 from datetime import datetime
-import pdb
 
 def get_picks(request):
     # see if user has already made selections
     profile = Profile.objects.get(user_id=request.user.id)
     if profile.has_picked:
-        pdb.set_trace()
         return render(request, 'picks/alreadypicked.html')
     list_of_games = Game.objects.all()
     if request.method == 'POST':

@@ -1,4 +1,4 @@
-<h1>Welcome {{ user.first_name }}</h1>
+<h1>Hello There {{ user.first_name }}</h1>
 
 <p>Welcome to: {{ league.name }}</p>
 
@@ -15,7 +15,7 @@
     </tr>
      {% for p in profiles %}
     <tr>
-        <td>{{ p.record.place }}</td>
+        <td>{{ forloop.counter }}</td>
         <td>{{ p.user.first_name }}</td>
         <td>{{ p.record.wins }}</td>
         <td>{{ p.record.losses }}</td>
@@ -23,5 +23,7 @@
     </tr>
     {% endfor %}
 </table>
+<hr/>
+<p>Your opponent this week: </p>
 <hr/>
 <a href="/registration/logout">Log out</a>

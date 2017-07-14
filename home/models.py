@@ -11,10 +11,15 @@ class Record(models.Model):
     wins = models.IntegerField(default=0)
     losses = models.IntegerField(default=0)
     ties = models.IntegerField(default=0)
-    place = models.IntegerField(default=0)
+    win_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     league = models.ForeignKey(League, on_delete=models.CASCADE)
     has_picked = models.BooleanField(default=False)
     record = models.ForeignKey(Record, on_delete=models.CASCADE, default=1)
+
+class Schedule(models.Model):
+    home_team = models.ForeignKey(User, on_delete=models.CASCADE, related_name='home_team', default=1)
+    away_team = models.ForeignKey(User, on_delete=models.CASCADE, related_name='away_team', default=1)
+    week = models.IntegerField(default=1)
