@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
-from datetime import datetime
+from django import forms
 
 def team_name_default():
     return {'name', 'place holder name'}
@@ -26,8 +25,10 @@ class Game(models.Model):
         away_team = Team.objects.get(pk=self.away_team_id)
         retStr = home_team.name + ' vs ' + away_team.name
 
-class Pick(models.Model):
+class PickDetails(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    team_picked = models.CharField(max_length=50, null=True)
     is_correct = models.NullBooleanField()
     week = models.IntegerField(default=1)
+
+class Pick(models.Model):
+    team_picked = models.CharField(max_length=50, null=False)

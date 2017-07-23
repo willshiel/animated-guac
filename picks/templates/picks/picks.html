@@ -1,15 +1,9 @@
 <h1>Make Your Picks!</h1>
 <form method="post">
     {% csrf_token %}
-    {% for g in game %}
-        <ul>
-            <p>Game {{ forloop.counter }}</p>
-            <ul>
-                <li>{{ g.home_team_name }} vs {{ g.away_team_name }}
-                    {{ form.as_p }}
-                </li>
-            </ul>
-        </ul>
+    {% for game in games %}
+        <p>{{ game.home_team }} vs {{ game.away_team }}</p>
+        {{ form }}
     {% endfor %}
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Submit Picks" />
 </form>

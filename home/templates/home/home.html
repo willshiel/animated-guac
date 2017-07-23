@@ -16,7 +16,7 @@
      {% for p in profiles %}
     <tr>
         <td>{{ forloop.counter }}</td>
-        <td>{{ p.user.first_name }}</td>
+        <td>{{ p.team_name }}</td>
         <td>{{ p.record.wins }}</td>
         <td>{{ p.record.losses }}</td>
         <td>{{ p.record.ties }}</td>
@@ -24,6 +24,6 @@
     {% endfor %}
 </table>
 <hr/>
-<p>Your opponent this week: </p>
+<p>Your opponent this week: {{ opponent.team_name }}</p>
 <hr/>
 <a href="/registration/logout">Log out</a>
