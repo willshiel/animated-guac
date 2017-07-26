@@ -31,4 +31,4 @@ class PickDetails(models.Model):
     week = models.IntegerField(default=1)
 
 class Pick(models.Model):
-    team_picked = models.CharField(max_length=50, null=False)
+    team_picked = models.ForeignKey(Team)

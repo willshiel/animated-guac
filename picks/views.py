@@ -5,18 +5,29 @@ from .forms import PickForm
 from django.forms import modelformset_factory
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
+import pdb
+from django import forms
 
 def get_picks(request):
     # see if user has already made selections
     profile = Profile.objects.get(user_id=request.user.id)
     if profile.has_picked:
         return render(request, 'picks/alreadypicked.html')
-    games = Game.objects.all()
+    games = Game.objects.filter(week=1)
+    amount_of_games = len(games)
+    PickFormSet = modelformset_factory(Pick, form=PickForm, extra=amount_of_games)
     if request.method == 'POST':
-        form = PickForm(request.POST)
-        if form.is_valid():
-            form.save(commit=false)
+        formset = PickFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            profile.has_picked = True
+            profile.save()
+            return HttpResponseRedirect('/home/')
     else:
-        form = PickForm()
+        formset = PickFormSet()
+        for i in range(0, amount_of_games):
+            formset[i].fields['team_picked'] = forms.ModelChoiceField(
+                queryset=Team.objects.filter(name=games[i].home_team_name) | Team.objects.filter(name=games[i].away_team_name)
+            )
 
-    return render(request, 'picks/picks.html', { 'form': form, 'games': games })
+    return render(request, 'picks/picks.html', { 'formset': formset, 'games': games, 'range': range(2) })

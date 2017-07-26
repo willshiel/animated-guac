@@ -1,9 +1,11 @@
 <h1>Make Your Picks!</h1>
+{% load index %}
 <form method="post">
     {% csrf_token %}
     {% for game in games %}
-        <p>{{ game.home_team }} vs {{ game.away_team }}</p>
-        {{ form }}
+        <li>{{ game.home_team_name }} vs {{ game.away_team_name }}</li>
+        {{ formset.management_form }}
+        {{ formset|index:forloop.counter0 }}
     {% endfor %}
     <input type="submit" value="Submit Picks" />
 </form>
