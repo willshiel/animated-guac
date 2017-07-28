@@ -1,16 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from .forms import MyUserCreationForm
 from django.contrib.auth import logout
+from home.models import Profile
 
 def register(request):
     if request.method == 'POST':
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
-            # save to the database
             instance = form.save(commit=False)
             instance.save()
-            return HttpResponseRedirect('/home/')
+            return HttpResponseRedirect('/home/profile')
     else:
         form = MyUserCreationForm()
 

@@ -25,10 +25,8 @@ class Game(models.Model):
         away_team = Team.objects.get(pk=self.away_team_id)
         retStr = home_team.name + ' vs ' + away_team.name
 
-class PickDetails(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    is_correct = models.NullBooleanField()
-    week = models.IntegerField(default=1)
-
 class Pick(models.Model):
     team_picked = models.ForeignKey(Team)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=3)
+    is_correct = models.NullBooleanField()
+    week = models.IntegerField(default=1)

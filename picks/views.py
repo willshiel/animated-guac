@@ -8,16 +8,21 @@ from django.contrib.auth.models import User
 import pdb
 from django import forms
 
+CURRENT_WEEK = 1
+
 def get_picks(request):
     # see if user has already made selections
     profile = Profile.objects.get(user_id=request.user.id)
     if profile.has_picked:
         return render(request, 'picks/alreadypicked.html')
-    games = Game.objects.filter(week=1)
+    games = Game.objects.filter(week=CURRENT_WEEK)
     amount_of_games = len(games)
     PickFormSet = modelformset_factory(Pick, form=PickForm, extra=amount_of_games)
     if request.method == 'POST':
         formset = PickFormSet(request.POST, request.FILES)
+        for form in formset:
+            form.user = request.user
+            form.week = CURRENT_WEEK
         if formset.is_valid():
             formset.save()
             profile.has_picked = True
