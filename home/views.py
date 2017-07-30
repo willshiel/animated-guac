@@ -5,16 +5,15 @@ from .models import Profile, League, Schedule
 from .forms import ProfileForm
 from django.http import HttpResponseRedirect
 import pdb
+from common.current_week import CURRENT_WEEK
 
-# @login_required(login_url='/registration/login') # required to login to get to this page
+@login_required(redirect_field_name='') # required to login to get to this page
 def home(request):
     league = getLeague(request.user.id)
-    if league is None:
-        return HttpResponseRedirect('/home/league')
     user = User.objects.get(username=request.user.username)
     profiles = Profile.objects.filter(league=league).order_by('record__win_percentage')
-    opponent = Schedule.objects.get(home_team=1, week=1)
-    opponent_profile = opponent.away_team
+    opponent = Schedule.objects.get(user_id=request.user.id, week=CURRENT_WEEK)
+    opponent_profile = Profile.objects.get(user_id=opponent.opponent)
 
     return render(request, 'home/home.html', {'user': user, 'profiles': profiles, 'league': league, 'opponent': opponent_profile})
 
@@ -28,9 +27,8 @@ def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
-            pdb.set_trace()
             form.save()
-        return HttpResponseRedirect('/home/')
+            return HttpResponseRedirect('/home/')
     else:
         form = ProfileForm()
 

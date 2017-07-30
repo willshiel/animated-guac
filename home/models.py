@@ -15,12 +15,12 @@ class Record(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    team_name = models.CharField(max_length=50, null=False, default='Team Will')
+    team_name = models.CharField(max_length=50, null=False, unique=True)
     league = models.ForeignKey(League, on_delete=models.CASCADE)
     has_picked = models.BooleanField(default=False)
     record = models.ForeignKey(Record, on_delete=models.CASCADE, default=1)
 
 class Schedule(models.Model):
-    home_team = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='home_team', default=1)
-    away_team = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='away_team', default=1)
+    user_id = models.BigIntegerField(default=1)
+    opponent = models.BigIntegerField(default=1)
     week = models.IntegerField(default=1)

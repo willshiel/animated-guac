@@ -21,7 +21,7 @@ class ProfileForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         kwargs['commit'] = False
         profile = super(ProfileForm, self).save(*args, **kwargs)
-        # get latest user id
+        # get latest user id because this one will be the one that was just created
         user = User.objects.filter().order_by('-id')[:1][0]
         profile.user = user
         profile.save()

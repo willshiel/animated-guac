@@ -7,9 +7,10 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 import pdb
 from django import forms
+from django.contrib.auth.decorators import login_required
+from common.current_week import CURRENT_WEEK
 
-CURRENT_WEEK = 1
-
+@login_required(redirect_field_name='') # required to login to get to this page
 def get_picks(request):
     # see if user has already made selections
     profile = Profile.objects.get(user_id=request.user.id)

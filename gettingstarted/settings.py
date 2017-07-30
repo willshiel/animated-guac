@@ -147,6 +147,9 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-# Login Redirect
+# Login redirect url
 LOGIN_REDIRECT_URL = '/home/'
+
+# Login URL
+LOGIN_URL = '/registration/login'
 

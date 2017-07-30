@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from .forms import MyUserCreationForm
 from django.contrib.auth import logout
 from home.models import Profile
+from django.contrib.auth import authenticate, login
 
 def register(request):
     if request.method == 'POST':
@@ -10,6 +11,10 @@ def register(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+            login(request, new_user)
             return HttpResponseRedirect('/home/profile')
     else:
         form = MyUserCreationForm()
