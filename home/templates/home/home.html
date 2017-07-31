@@ -1,29 +1,37 @@
-<h1>Hello There {{ user.first_name }}</h1>
+{%  extends 'home/base.html' %}
 
-<p>Welcome to: {{ league.name }}</p>
+{% block content %}
+    <div class="col-md-4">
+        <h1>Hello There {{ user.first_name }}</h1>
+        <p>Welcome to: {{ league.name }}</p>
+    </div>
 
-<hr/>
-<a href='/picks/picks'>Make Picks</a>
-<hr/>
-<table>
-    <tr>
-        <th>Place</th>
-        <th>Name</th>
-        <th>Wins</th>
-        <th>Losses</th>
-        <th>Ties</th>
-    </tr>
-     {% for p in profiles %}
-    <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ p.team_name }}</td>
-        <td>{{ p.record.wins }}</td>
-        <td>{{ p.record.losses }}</td>
-        <td>{{ p.record.ties }}</td>
-    </tr>
-    {% endfor %}
-</table>
-<hr/>
-<p>Your opponent this week: {{ opponent.team_name }}</p>
-<hr/>
-<a href="/registration/logout">Log out</a>
+    <hr/>
+    <table class="table">
+        <tr>
+            <th>Place</th>
+            <th>Name</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Ties</th>
+        </tr>
+         {% for p in profiles %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ p.team_name }}</td>
+            <td>{{ p.record.wins }}</td>
+            <td>{{ p.record.losses }}</td>
+            <td>{{ p.record.ties }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr/>
+    {%  if opponent.team_name != '' %}
+        <p>Your opponent this week: {{ opponent.team_name }}</p>
+    {% else %}
+        <p>The schedule has not been set yet</p>
+    {% endif %}
+    <hr/>
+    <a class="btn btn-default" href="/registration/logout">Log out</a>
+
+{% endblock %}

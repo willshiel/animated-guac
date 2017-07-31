@@ -1,11 +1,25 @@
-<h1>Make Your Picks!</h1>
-{% load index %}
-<form method="post">
-    {% csrf_token %}
-    {% for game in games %}
-        <li>{{ game.home_team_name }} vs {{ game.away_team_name }}</li>
-        {{ formset.management_form }}
-        {{ formset|index:forloop.counter0 }}
-    {% endfor %}
-    <input type="submit" value="Submit Picks" />
-</form>
+{% extends 'picks/base.html' %}
+
+{% block content %}
+
+    <div class="container p-none">
+        <div class="col-md-4 col-md-offset-4 picks-form">
+            <h1>Make Your Picks!</h1>
+            {% load index %}
+            <form method="post">
+                {% csrf_token %}
+                {% for game in games %}
+                    <div class="form-group">
+                        <li>{{ game.home_team_name }} vs {{ game.away_team_name }}</li>
+                        {{ formset.management_form }}
+                        {{ formset|index:forloop.counter0 }}
+                    </div>
+                {% endfor %}
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Submit Picks" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

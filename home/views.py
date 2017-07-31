@@ -12,8 +12,12 @@ def home(request):
     league = getLeague(request.user.id)
     user = User.objects.get(username=request.user.username)
     profiles = Profile.objects.filter(league=league).order_by('record__win_percentage')
-    opponent = Schedule.objects.get(user_id=request.user.id, week=CURRENT_WEEK)
-    opponent_profile = Profile.objects.get(user_id=opponent.opponent)
+    try:
+        opponent = Schedule.objects.get(user_id=request.user.id, week=CURRENT_WEEK)
+        opponent_profile = Profile.objects.get(user_id=opponent.opponent)
+    except:
+        opponent = Schedule()
+        opponent_profile = Profile()
 
     return render(request, 'home/home.html', {'user': user, 'profiles': profiles, 'league': league, 'opponent': opponent_profile})
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Fantasy Soccer</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/picks.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+</head>
+<!-- Navbar shamelessly stolen from bootstrap's website -->
+<body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/home/">MyFantasySoccer</a>
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

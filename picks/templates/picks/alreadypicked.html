@@ -1,3 +1,11 @@
-<h1>You have already made your selections for this week</h1>
+{% extends 'picks/base.html' %}
 
-<a href="/home/">Go Home</a>
+{% block content %}
+
+    <div class="col-md-4 col-md-offset-4">
+        <h2>You have already made your selections for this week</h2>
+
+        <a class="btn btn-primary" href="/home/">Go Home</a>
+    </div>
+
+{% endblock %}
