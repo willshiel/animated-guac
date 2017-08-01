@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 class League(models.Model):
     name = models.CharField(max_length=50, null=False)
+    password = models.CharField(max_length=50, null=False, default='password')
 
     def __str__(self):
         return self.name
@@ -17,6 +18,7 @@ class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     team_name = models.CharField(max_length=50, null=False, unique=True)
     league = models.ForeignKey(League, on_delete=models.CASCADE)
+    league_password = models.CharField(max_length=50, default='password')
     has_picked = models.BooleanField(default=False)
     record = models.ForeignKey(Record, on_delete=models.CASCADE, default=1)
 
