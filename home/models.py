@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class League(models.Model):
     name = models.CharField(max_length=50, null=False)
-    password = models.CharField(max_length=50, null=False, default='password')
+    password = models.CharField(max_length=50, null=True, default='password')
 
     def __str__(self):
         return self.name

@@ -2,6 +2,7 @@ from django import forms
 from .models import Profile
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+import hashlib
 import pdb
 
 class ProfileForm(forms.ModelForm):
@@ -24,8 +25,11 @@ class ProfileForm(forms.ModelForm):
     def clean(self):
         super(ProfileForm, self).clean()
         cleaned_data = self.cleaned_data
-        password_check = cleaned_data['league'].password
-        valid_password = cleaned_data['league_password']
+        try:
+            password_check = cleaned_data['league'].password
+            valid_password = cleaned_data['league_password']
+        except (KeyError):
+            raise ValidationError("The league password can't be left blank")
         if password_check != valid_password:
             raise ValidationError("The league password is incorrect")
         return cleaned_data
@@ -38,5 +42,6 @@ class ProfileForm(forms.ModelForm):
         # kinda sketch I'm aware, can you think of a better way plz
         user = User.objects.filter().order_by('-id')[:1][0]
         profile.user = user
+        profile.league_password = str(hash(profile.league_password))
         profile.save()
         return profile

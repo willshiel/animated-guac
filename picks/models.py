@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django import forms
+from common.current_week import CURRENT_WEEK
 
 def team_name_default():
     return {'name', 'place holder name'}
@@ -27,6 +28,6 @@ class Game(models.Model):
 
 class Pick(models.Model):
     team_picked = models.ForeignKey(Team)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=3)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=4)
     is_correct = models.NullBooleanField()
-    week = models.IntegerField(default=1)
+    week = models.IntegerField(default=CURRENT_WEEK)

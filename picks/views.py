@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Team, Game, Pick
 from home.models import Profile
 from .forms import PickForm
-from django.forms import modelformset_factory
+from django.forms import formset_factory
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 import pdb
@@ -18,16 +18,15 @@ def get_picks(request):
         return render(request, 'picks/alreadypicked.html')
     games = Game.objects.filter(week=CURRENT_WEEK)
     amount_of_games = len(games)
-    PickFormSet = modelformset_factory(Pick, form=PickForm, extra=amount_of_games)
+    PickFormSet = formset_factory(PickForm, extra=amount_of_games)
     if request.method == 'POST':
         formset = PickFormSet(request.POST, request.FILES)
-        for form in formset:
-            form.user = request.user
-            form.week = CURRENT_WEEK
         if formset.is_valid():
-            formset.save()
+            for form in formset:
+                pdb.set_trace()
+                form.save(request.user)
             profile.has_picked = True
-            profile.save()
+            # profile.save()
             return HttpResponseRedirect('/home/')
     else:
         formset = PickFormSet()
