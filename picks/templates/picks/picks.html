@@ -8,6 +8,11 @@
             {% load index %}
             <form method="post">
                 {% csrf_token %}
+                {% if formset.non_form_errors %}
+                <div class="alert alert-danger">
+                    {{ formset.non_form_errors }}
+                </div>
+                {% endif %}
                 {% for game in games %}
                     <div class="form-group">
                         <li>{{ game.home_team_name }} vs {{ game.away_team_name }}</li>
