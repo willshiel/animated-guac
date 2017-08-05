@@ -4,7 +4,9 @@
     <list default="true" id="c134e620-f320-4b5e-8165-c94c19b567f1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/picks/forms.py" afterPath="$PROJECT_DIR$/picks/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/picks/models.py" afterPath="$PROJECT_DIR$/picks/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/picks/templates/picks/picks.html" afterPath="$PROJECT_DIR$/picks/templates/picks/picks.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/picks/templatetags/index.py" afterPath="$PROJECT_DIR$/picks/templatetags/index.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/picks/views.py" afterPath="$PROJECT_DIR$/picks/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,14 +33,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/picks/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="20" column="84" lean-forward="false" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
+            <state relative-caret-position="288">
+              <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1501845139455" expanded="true" signature="1026:1099" ph="..." />
+                <marker date="1501845540901" expanded="true" signature="1026:1099" ph="..." />
               </folding>
             </state>
           </provider>
@@ -47,8 +49,8 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/picks/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+            <state relative-caret-position="612">
+              <caret line="39" column="82" lean-forward="false" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -59,7 +61,7 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="288">
               <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -68,11 +70,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="picks.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="picks.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/picks/templates/picks/picks.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+            <state relative-caret-position="360">
+              <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/picks/templatetags/index.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -81,7 +93,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
+            <state relative-caret-position="342">
               <caret line="26" column="56" lean-forward="false" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="56" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -93,8 +105,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/picks/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="30" column="70" lean-forward="false" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
+            <state relative-caret-position="540">
+              <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -167,7 +179,6 @@
         <option value="$PROJECT_DIR$/registration/forms.py" />
         <option value="$PROJECT_DIR$/picks/templatetags/__init__.py" />
         <option value="$PROJECT_DIR$/picks/templatetags/pick_extras.py" />
-        <option value="$PROJECT_DIR$/picks/templatetags/index.py" />
         <option value="$PROJECT_DIR$/picks/templates/picks/profile.html" />
         <option value="$PROJECT_DIR$/home/urls.py" />
         <option value="$PROJECT_DIR$/registration/views.py" />
@@ -191,9 +202,10 @@
         <option value="$PROJECT_DIR$/home/views.py" />
         <option value="$PROJECT_DIR$/home/forms.py" />
         <option value="$PROJECT_DIR$/picks/models.py" />
-        <option value="$PROJECT_DIR$/picks/templates/picks/picks.html" />
-        <option value="$PROJECT_DIR$/picks/forms.py" />
         <option value="$PROJECT_DIR$/picks/views.py" />
+        <option value="$PROJECT_DIR$/picks/forms.py" />
+        <option value="$PROJECT_DIR$/picks/templatetags/index.py" />
+        <option value="$PROJECT_DIR$/picks/templates/picks/picks.html" />
       </list>
     </option>
   </component>
@@ -224,7 +236,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -242,11 +254,17 @@
               <item name="peaceful-caverns-76729" type="462c0819:PsiDirectoryNode" />
               <item name="picks" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="peaceful-caverns-76729" type="b2602c69:ProjectViewProjectNode" />
+              <item name="peaceful-caverns-76729" type="462c0819:PsiDirectoryNode" />
+              <item name="picks" type="462c0819:PsiDirectoryNode" />
+              <item name="templatetags" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -636,13 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/picks/templatetags/index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -796,9 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="5" column="56" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-          <folding>
-            <marker date="1501632750502" expanded="true" signature="557:679" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -809,19 +817,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/picks/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="30" column="70" lean-forward="false" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/home/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
+        <state relative-caret-position="342">
           <caret line="26" column="56" lean-forward="false" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="56" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -829,19 +827,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/picks/forms.py">
+    <entry file="file://$PROJECT_DIR$/picks/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+        <state relative-caret-position="540">
+          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/home/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="288">
           <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
@@ -849,22 +847,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/picks/templates/picks/picks.html">
+    <entry file="file://$PROJECT_DIR$/picks/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state relative-caret-position="288">
+          <caret line="27" column="14" lean-forward="false" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1501845540901" expanded="true" signature="1026:1099" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/picks/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="39" column="82" lean-forward="false" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/picks/templatetags/index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/picks/views.py">
+    <entry file="file://$PROJECT_DIR$/picks/templates/picks/picks.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="20" column="84" lean-forward="false" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1501845139455" expanded="true" signature="1026:1099" ph="..." />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -17,7 +17,8 @@
                     <div class="form-group">
                         <li>{{ game.home_team_name }} vs {{ game.away_team_name }}</li>
                         {{ formset.management_form }}
-                        {{ formset|index:forloop.counter0 }}
+                        <p>Team picked: {{ formset|team_picked:forloop.counter0 }}</p>
+                        <p>Margin: {{ formset|margin:forloop.counter0 }}</p>
                     </div>
                 {% endfor %}
                 <div>

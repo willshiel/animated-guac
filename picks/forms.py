@@ -12,6 +12,7 @@ class PickForm(forms.Form):
     '''
 
     team_picked = forms.IntegerField()
+    margin = forms.IntegerField()
 
     def save(self, user):
         cd = self.cleaned_data
@@ -27,8 +28,13 @@ class BasePickFormSet(BaseFormSet):
 
     def clean(self):
         forms = self.forms
+        pdb.set_trace()
         for form in forms:
             try:
                 is_team_picked = form.cleaned_data['team_picked']
             except (KeyError):
                 raise ValidationError("You must select a team for each matchup")
+            try:
+                margin = form.cleaned_data['margin']
+            except (KeyError):
+                raise ValidationError("You must select a margin for each matchup")
