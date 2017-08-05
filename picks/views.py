@@ -25,7 +25,7 @@ def get_picks(request):
             for form in formset:
                 form.save(request.user)
             profile.has_picked = True
-            # profile.save()
+            profile.save()
             return HttpResponseRedirect('/home/')
         else:
             create_team_picked_field(formset, games)

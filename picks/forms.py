@@ -10,7 +10,6 @@ class PickForm(forms.Form):
         A form that allows a user to make a pick on the
         selected game
     '''
-
     team_picked = forms.IntegerField()
     margin = forms.IntegerField()
 
@@ -25,10 +24,8 @@ class BasePickFormSet(BaseFormSet):
     '''
         Overrides the save method for custom validations
     '''
-
     def clean(self):
         forms = self.forms
-        pdb.set_trace()
         for form in forms:
             try:
                 is_team_picked = form.cleaned_data['team_picked']
