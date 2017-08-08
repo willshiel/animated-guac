@@ -18,7 +18,7 @@
          {% for p in profiles %}
         <tr>
             <td>{{ forloop.counter }}</td>
-            <td>{{ p.team_name }}</td>
+            <td><a href="/profiles/profiles">{{ p.team_name }}</a></td>
             <td>{{ p.record.wins }}</td>
             <td>{{ p.record.losses }}</td>
             <td>{{ p.record.ties }}</td>

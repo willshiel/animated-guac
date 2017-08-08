@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import BaseFormSet, ValidationError
 from .models import Pick, Game, Team
-from django.contrib.auth.models import User
 from common.current_week import CURRENT_WEEK
 import pdb
 

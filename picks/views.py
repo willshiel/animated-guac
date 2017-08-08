@@ -9,7 +9,6 @@ import pdb
 from django import forms
 from django.contrib.auth.decorators import login_required
 from common.current_week import CURRENT_WEEK
-from django.core.exceptions import ValidationError
 
 @login_required(redirect_field_name='') # required to login to get to this page
 def get_picks(request):

@@ -18,8 +18,8 @@ class Game(models.Model):
     away_team_id = models.BigIntegerField()
     away_team_name = models.CharField(max_length=50, default=team_name_default)
     winning_team_id = models.BigIntegerField(null=True)
-    difference_in_score = models.IntegerField(null=True)
-    week = models.IntegerField(default=1)
+    margin = models.IntegerField(null=True)
+    week = models.IntegerField(default=CURRENT_WEEK)
 
     def __str__(self):
         home_team = Team.objects.get(pk=self.home_team_id)

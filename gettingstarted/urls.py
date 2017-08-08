@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^registration/', include('registration.urls')),
     url(r'^home/', include('home.urls')),
     url(r'^picks/', include('picks.urls')),
+    url(r'^profiles/', include('profiles.urls')),
     url(r'^$', RedirectView.as_view(url='/registration/login', permanent=True)),
 ]
