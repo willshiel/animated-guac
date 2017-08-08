@@ -5,3 +5,7 @@
 .big-glyph {
     font-size: 10em;
 }
+
+.number-input {
+    width: 60px;
+}

@@ -2,36 +2,47 @@
 
 {% block content %}
     <div class="col-md-4">
-        <h1>Hello There {{ user.first_name }}</h1>
-        <p>Welcome to: {{ league.name }}</p>
+        <div id="welcome">
+            <h1>Hello There {{ user.first_name }}</h1>
+            <p>Welcome to: {{ league.name }}</p>
+        </div>
+        <div id="current-opponent">
+            {%  if opponent.team_name != '' %}
+            <p>Your opponent this week: {{ opponent.team_name }}</p>
+            {% else %}
+                <p>The schedule has not been set yet</p>
+            {% endif %}
+        </div>
+        <hr/>
+        <div>
+            <p>Message Board</p>
+            <p>To come in the future</p>
+        </div>
+        <hr/>
+        <a class="btn btn-primary" href="#">Dummy</a>
+        <a class="btn btn-default" href="/registration/logout">Log out</a>
     </div>
 
-    <hr/>
-    <table class="table">
-        <tr>
-            <th>Place</th>
-            <th>Name</th>
-            <th>Wins</th>
-            <th>Losses</th>
-            <th>Ties</th>
-        </tr>
-         {% for p in profiles %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td><a href="/profiles/profiles">{{ p.team_name }}</a></td>
-            <td>{{ p.record.wins }}</td>
-            <td>{{ p.record.losses }}</td>
-            <td>{{ p.record.ties }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <hr/>
-    {%  if opponent.team_name != '' %}
-        <p>Your opponent this week: {{ opponent.team_name }}</p>
-    {% else %}
-        <p>The schedule has not been set yet</p>
-    {% endif %}
-    <hr/>
-    <a class="btn btn-default" href="/registration/logout">Log out</a>
+    <div class="col-md-8">
+        <h2>Standings</h2>
+        <table class="table">
+            <tr>
+                <th>Place</th>
+                <th>Name</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Ties</th>
+            </tr>
+             {% for p in profiles %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="/profiles/profiles">{{ p.team_name }}</a></td>
+                <td>{{ p.record.wins }}</td>
+                <td>{{ p.record.losses }}</td>
+                <td>{{ p.record.ties }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 
 {% endblock %}

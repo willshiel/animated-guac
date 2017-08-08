@@ -31,4 +31,4 @@ class Pick(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=4)
     is_correct = models.NullBooleanField()
     week = models.IntegerField(default=CURRENT_WEEK)
-    margin = models.IntegerField(default=1)
+    margin = models.IntegerField()

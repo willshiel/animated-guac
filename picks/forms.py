@@ -10,12 +10,14 @@ class PickForm(forms.Form):
         selected game
     '''
     team_picked = forms.IntegerField()
-    margin = forms.IntegerField()
+    margin = forms.IntegerField(widget=forms.NumberInput(attrs={'style': 'width: 60px;', 'class': 'form-control'}))
 
     def save(self, user):
         cd = self.cleaned_data
+        pdb.set_trace()
         team_picked = Team.objects.get(pk=cd['team_picked'])
-        pick = Pick(team_picked=team_picked, week=CURRENT_WEEK, user=user)
+        margin = cd['margin']
+        pick = Pick(team_picked=team_picked, week=CURRENT_WEEK, user=user, margin=margin)
         pick.save()
 
 

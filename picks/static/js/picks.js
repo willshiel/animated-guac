@@ -6,4 +6,8 @@ $( document ).ready(function() {
 
     });
 
+    $( "#modal-close" ).click(function() {
+        $( "#scoring-modal" ).hide();
+    });
+
 });
