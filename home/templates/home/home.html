@@ -1,29 +1,31 @@
 {%  extends 'home/base.html' %}
 
 {% block content %}
-    <div class="col-md-4">
-        <div id="welcome">
-            <h1>Hello There {{ user.first_name }}</h1>
-            <p>Welcome to: {{ league.name }}</p>
+    <div class="col-md-4" id="welcome-block">
+        <div class="col-md-offset-1">
+            <div id="welcome">
+                <h1>Hello There {{ user.first_name }}</h1>
+                <p>Welcome to: {{ league.name }}</p>
+            </div>
+            <div id="current-opponent">
+                {%  if opponent.team_name != '' %}
+                <p>Your opponent this week: {{ opponent.team_name }}</p>
+                {% else %}
+                    <p>The schedule has not been set yet</p>
+                {% endif %}
+            </div>
+            <hr/>
+            <div>
+                <p>Message Board</p>
+                <p>To come in the future</p>
+            </div>
+            <hr/>
+            <a class="btn btn-primary" href="/picks/picks">Make Picks</a>
+            <a class="btn btn-default" href="/registration/logout">Log out</a>
         </div>
-        <div id="current-opponent">
-            {%  if opponent.team_name != '' %}
-            <p>Your opponent this week: {{ opponent.team_name }}</p>
-            {% else %}
-                <p>The schedule has not been set yet</p>
-            {% endif %}
-        </div>
-        <hr/>
-        <div>
-            <p>Message Board</p>
-            <p>To come in the future</p>
-        </div>
-        <hr/>
-        <a class="btn btn-primary" href="#">Dummy</a>
-        <a class="btn btn-default" href="/registration/logout">Log out</a>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-7">
         <h2>Standings</h2>
         <table class="table">
             <tr>
@@ -36,7 +38,7 @@
              {% for p in profiles %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a href="/profiles/profiles">{{ p.team_name }}</a></td>
+                <td><a href="/profiles/profiles/{{ p.user_id }}">{{ p.team_name }}</a></td>
                 <td>{{ p.record.wins }}</td>
                 <td>{{ p.record.losses }}</td>
                 <td>{{ p.record.ties }}</td>

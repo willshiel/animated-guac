@@ -9,3 +9,7 @@
 .number-input {
     width: 60px;
 }
+
+.extra-bottom-padding {
+    padding-bottom: 100px;
+}

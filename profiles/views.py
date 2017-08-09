@@ -9,6 +9,8 @@ def get_profile(request):
     :param request: user information and http information
     :return: the rendered template with user and profile
     '''
-    user = User.objects.get(pk=6)
-    user_profile = Profile.objects.get(pk=6)
+    url = request.build_absolute_uri()
+    profile_id = url.rsplit('/', 1)[1]
+    user = User.objects.get(pk=profile_id)
+    user_profile = Profile.objects.get(user_id=profile_id)
     return render(request, 'profiles/profile.html', { 'user': user, 'user_profile': user_profile })

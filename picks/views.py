@@ -42,6 +42,7 @@ def get_picks(request):
 def create_team_picked_field(formset, games):
     for i in range(0, len(games)):
         formset[i].fields['team_picked'] = forms.ModelChoiceField(
-            queryset=Team.objects.filter(name=games[i].home_team_name) | Team.objects.filter(name=games[i].away_team_name),
+            queryset=Team.objects.filter(name=games[i].home_team_name) | Team.objects.filter(name=games[i].away_team_name)
+            | Team.objects.filter(name='Draw'),
             widget=forms.Select(attrs={'class': 'form-control'})
         )

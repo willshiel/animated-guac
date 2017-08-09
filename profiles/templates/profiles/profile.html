@@ -1,10 +1,15 @@
 {%  extends 'profiles/base.html' %}
 
 {% block content %}
-
-    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-    <p>{{ user_profile.team_name }}</p>
-    <p>{{ user_profile.record.wins }}</p>
+    <div class="container">
+        <div>
+            <h4>{{ user_profile.team_name }}</h4>
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Date Joined: {{ user.date_joined }}</p>
+        </div>
+        <h1>This page is not yet completed</h1>
+    </div>
 
 {% endblock %}
 
