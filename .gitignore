@@ -3,6 +3,5 @@ venv
 staticfiles
 .env
 app.json
-settings.py
 
 .idea/inspectionProfiles/
