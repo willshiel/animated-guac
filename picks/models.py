@@ -17,6 +17,7 @@ class Game(models.Model):
     home_team_name = models.CharField(max_length=50, default=team_name_default)
     away_team_id = models.BigIntegerField()
     away_team_name = models.CharField(max_length=50, default=team_name_default)
+    underdog = models.IntegerField(null=True)
     winning_team_id = models.BigIntegerField(null=True)
     margin = models.IntegerField(null=True)
     week = models.IntegerField(default=CURRENT_WEEK)

@@ -24,8 +24,13 @@
                     </tr>
                 {% for game in games %}
                     <tr>
-                    <td>{{ game.home_team_name }}</td>
-                    <td>{{ game.away_team_name }}</td>
+                    {% if game.home_team_id == game.underdog %}
+                        <td class="red">{{ game.home_team_name }}</td>
+                        <td>{{ game.away_team_name }}</td>
+                    {% else %}
+                        <td>{{ game.home_team_name }}</td>
+                        <td class="red">{{ game.away_team_name }}</td>
+                    {% endif %}
                     <div class="form-group">
                         {{ formset.management_form }}
                         <td>{{ formset|team_picked:forloop.counter0 }}</td>
