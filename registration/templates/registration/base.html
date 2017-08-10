@@ -10,7 +10,7 @@
 </head>
 <!-- Navbar shamelessly stolen from bootstrap's website -->
 <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -21,5 +21,8 @@
 
     {% block content %}
     {% endblock %}
+    <footer class="navbar navbar-default navbar-fixed-bottom">
+        <span class="col-md-8 col-md-offset-2 text-muted"></span>
+    </footer>
 </body>
 </html>

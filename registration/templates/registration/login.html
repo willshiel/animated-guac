@@ -4,14 +4,14 @@
 <div id="content-container" class="container p-none">
     <div class="col-lg-4 col-lg-offset-4">
         <h2 class="vertical-center form-group">Login</h2>
-        <form method="post">
+        <form class="form-group" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <div id="buttons" class="col-md-offset-2">
+            <div id="buttons" class="col-md-offset-3">
                 <button class="btn btn-primary" type="submit">Login</button>
                 <a class="btn btn-default" href="/registration/register">Register</a>
+                <a class="btn btn-link" title="Haha, just text me">Forgot Password?</a>
             </div>
-            <a class="btn btn-link col-md-offset-2" title="Haha, just text me">Forgot Password?</a>
         </form>
     </div>
 </div>
