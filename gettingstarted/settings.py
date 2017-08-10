@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -152,4 +153,7 @@ LOGIN_REDIRECT_URL = '/home/'
 
 # Login URL
 LOGIN_URL = '/registration/login'
+
+# Crispy template pack
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 

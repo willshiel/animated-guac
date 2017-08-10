@@ -3,14 +3,14 @@
 <p hidden>{% block makepicks %}{% endblock %}</p>
 
 {% block content %}
-
+    {% load crispy_forms_filters %}
     <div class="container p-none">
         <div class="col-md-4 col-md-offset-4">
             <h2 id="create-title">Please register your team</h2>
             <form method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Submit" />
+                {{ form | crispy }}
+                <input class="btn btn-primary" type="submit" value="Submit" />
             </form>
         </div>
     </div>
