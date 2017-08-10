@@ -2,7 +2,6 @@ dj-database-url==0.4.1
 Django==1.9.7
 django-crispy-forms==1.6.1
 gunicorn==19.6.0
-gyp==0.1
 psycopg2==2.6.2
 requests==2.9.1
 reverse==0.1.0
