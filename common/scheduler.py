@@ -9,7 +9,7 @@ import sys
 '''
 
 def scheduler(**kwargs):
-    print 'Connecting to database'
+    print ('Connecting to database')
     conn = psycopg2.connect("dbname={0} user={1}".format(kwargs['db_name'], kwargs['user']))
     c = conn.cursor()
     c.execute('''select au.id from auth_user au
@@ -37,12 +37,10 @@ def scheduler(**kwargs):
         users.insert(1, users.pop())
 
     # add each matchup to each database, count tracks the week
-    print 'beginning the entries'
+    print ('beginning the entries')
     count = 1
     for week in matchups_by_week:
-        print 'You got to week'
         for matchup in week:
-            print 'You got to inserts'
             sql = "insert into home_schedule (user_id, opponent, week) values (%s, %s, %s)"
             data = (matchup[0], matchup[1], count)
             c.execute(sql, data)
@@ -51,7 +49,7 @@ def scheduler(**kwargs):
             c.execute(sql, data)
         count += 1
 
-    print 'Your data has been entered'
+    print ('Your data has been entered')
 
     conn.commit()
     c.close()
@@ -64,7 +62,7 @@ def main():
     try:
         scheduler(db_name=db_name, user=user, league_id=league_id)
     except IndexError:
-        print "Command incorrect"
-        print "Correct input is: python scheduler.py db_name user league_id"
+        print ('Command incorrect')
+        print ('Correct input is: python scheduler.py db_name user league_id')
 
 main()
