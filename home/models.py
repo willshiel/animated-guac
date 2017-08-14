@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from common.current_week import CURRENT_WEEK
 
 class League(models.Model):
     name = models.CharField(max_length=50, null=False)
@@ -26,3 +27,8 @@ class Schedule(models.Model):
     user_id = models.BigIntegerField(default=1)
     opponent = models.BigIntegerField(default=1)
     week = models.IntegerField(default=1)
+
+class PointsForWeek(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    week = models.IntegerField(default=CURRENT_WEEK)
+    points = models.IntegerField(default=0)

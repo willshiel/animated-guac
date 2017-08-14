@@ -12,6 +12,10 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+
+'''
+    TODO: make relationship between game and pick
+'''
 class Game(models.Model):
     home_team_id = models.BigIntegerField()
     home_team_name = models.CharField(max_length=50, default=team_name_default)
@@ -25,7 +29,7 @@ class Game(models.Model):
     def __str__(self):
         home_team = Team.objects.get(pk=self.home_team_id)
         away_team = Team.objects.get(pk=self.away_team_id)
-        retStr = home_team.name + ' vs ' + away_team.name
+        return home_team.name + ' vs ' + away_team.name
 
 class Pick(models.Model):
     team_picked = models.ForeignKey(Team)
@@ -33,3 +37,4 @@ class Pick(models.Model):
     is_correct = models.NullBooleanField()
     week = models.IntegerField(default=CURRENT_WEEK)
     margin = models.IntegerField()
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, default=10)
