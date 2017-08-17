@@ -1,11 +1,9 @@
 from django.shortcuts import render
-from .models import Team, Game, Pick
+from .models import Team, Game
 from home.models import Profile
 from .forms import PickForm, BasePickFormSet
 from django.forms import formset_factory
 from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
-import pdb
 from django import forms
 from django.contrib.auth.decorators import login_required
 from common.current_week import CURRENT_WEEK

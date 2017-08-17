@@ -3,9 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Profile, League, Schedule
 from .forms import ProfileForm
+from picks.models import Pick, Game
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 import pdb
 from common.current_week import CURRENT_WEEK
+import operator
 
 @login_required(redirect_field_name='') # required to login to get to this page
 def home(request):
@@ -37,3 +40,17 @@ def profile(request):
         form = ProfileForm()
 
     return render(request, 'home/profile.html', {'form': form})
+
+# shows the matchup that a user has
+def matchup(request):
+    # get the picks the user has made as well as the games that are available
+    user_picks = Pick.objects.filter(Q(user_id=request.user.id) & Q(week=CURRENT_WEEK))
+    games = Game.objects.filter(week=CURRENT_WEEK)
+
+    # get the user's opponents picks
+    opponent = Schedule.objects.get(Q(user_id=request.user.id) & Q(week=CURRENT_WEEK))
+    opponent_picks = Pick.objects.filter(Q(user_id=opponent.opponent) & Q(week=CURRENT_WEEK))
+
+    dict = {'user': user_picks, 'games': games, 'opp_picks': opponent_picks}
+
+    return render(request, 'home/matchup.html', dict)

@@ -1,0 +1,86 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <div class="container p-none">
+        <div class="col-md-6 picks-form">
+            {% load home_filters %}
+            <div>
+                <h2>Your selections Total Points: </h2>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Selection</th>
+                    <th>Margin</th>
+                    <th>Actual Winner</th>
+                    <th>Actual Margin</th>
+                </tr>
+                {% for game in games %}
+                    <tr>
+                        <!-- The list of games for the current week -->
+                        {% if game.home_team_id == game.underdog %}
+                            <td class="red">{{ game.home_team_name }}</td>
+                            <td>{{ game.away_team_name }}</td>
+                        {% else %}
+                            <td>{{ game.home_team_name }}</td>
+                            <td class="red">{{ game.away_team_name }}</td>
+                        {% endif %}
+
+                        <!-- The picks that the user made -->
+                        <td>{{ user|users_pick:forloop.counter0 }}</td>
+                        <td>{{ user|users_margin:forloop.counter0 }}</td>
+
+                        <!-- The actual results of the game -->
+                        <td>{{ game.winning_team }}</td>
+                        <td>
+                        {% if game.margin is not None %}
+                            {{ game.margin }}
+                        {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-md-6 picks-form">
+            {% load home_filters %}
+            <div>
+                <h2>Opponent's selections Total Points: </h2>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Selection</th>
+                    <th>Margin</th>
+                    <th>Actual Winner</th>
+                    <th>Actual Margin</th>
+                </tr>
+                {% for game in games %}
+                    <tr>
+                        <!-- The list of games for the current week -->
+                        {% if game.home_team_id == game.underdog %}
+                            <td class="red">{{ game.home_team_name }}</td>
+                            <td>{{ game.away_team_name }}</td>
+                        {% else %}
+                            <td>{{ game.home_team_name }}</td>
+                            <td class="red">{{ game.away_team_name }}</td>
+                        {% endif %}
+
+                        <!-- The picks that the user made -->
+                        <td>{{ opp_picks|users_pick:forloop.counter0 }}</td>
+                        <td>{{ opp_picks|users_margin:forloop.counter0 }}</td>
+
+                        <!-- The actual results of the game -->
+                        <td>{{ game.winning_team }}</td>
+                        <td>
+                        {% if game.margin is not None %}
+                            {{ game.margin }}
+                        {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
