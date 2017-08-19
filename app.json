@@ -1,8 +1,0 @@
-{
-  "name": "MyFantasySoccer",
-  "description": "A newer way to play fantasy soccer...with less maintenance.",
-  "image": "heroku/python",
-  "repository": "https://github.com/heroku/python-getting-started",
-  "keywords": ["python", "django" ],
-  "addons": [ "heroku-postgresql" ]
-}
