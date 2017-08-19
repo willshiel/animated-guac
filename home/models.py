@@ -16,12 +16,18 @@ class Profile(models.Model):
     league_password = models.CharField(max_length=50, default='password')
     has_picked = models.BooleanField(default=False)
 
+    def __str__(self):
+        return str(self.team_name)
+
 class Record(models.Model):
     wins = models.IntegerField(default=0)
     losses = models.IntegerField(default=0)
     ties = models.IntegerField(default=0)
     win_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name + ': ' + self.win_percentage
 
 class Schedule(models.Model):
     user_id = models.BigIntegerField(default=1)
