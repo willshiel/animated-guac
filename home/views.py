@@ -1,20 +1,26 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Profile, League, Schedule
+from .models import Profile, League, Schedule, Record
 from .forms import ProfileForm
 from picks.models import Pick, Game
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 import pdb
 from common.current_week import CURRENT_WEEK
-import operator
 
 @login_required(redirect_field_name='') # required to login to get to this page
 def home(request):
     league = getLeague(request.user.id)
     user = User.objects.get(username=request.user.username)
-    profiles = Profile.objects.filter(league=league).order_by('record__win_percentage')
+
+    # associate each record with a profile for display
+    list_of_profiles = Profile.objects.filter(league=league)
+    list_of_users = User.objects.filter(id__in=(o.user_id for o in list_of_profiles))
+    records = Record.objects.filter(user__in=list_of_users)
+    for record in records:
+        record.profile = Profile.objects.get(user_id=record.user.id)
+
     try:
         opponent = Schedule.objects.get(user_id=request.user.id, week=CURRENT_WEEK)
         opponent_profile = Profile.objects.get(user_id=opponent.opponent)
@@ -22,7 +28,7 @@ def home(request):
         opponent = Schedule()
         opponent_profile = Profile()
 
-    return render(request, 'home/home.html', {'user': user, 'profiles': profiles, 'league': league, 'opponent': opponent_profile})
+    return render(request, 'home/home.html', {'user': user, 'records': records, 'league': league, 'opponent': opponent_profile})
 
 # returns the user's league object
 def getLeague(user_id):

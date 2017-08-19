@@ -65,7 +65,6 @@ def results(**kwargs):
         print ('Insert finished')
 
     print ('Comparing scores now')
-    count = 0
     for user in users:
 
         # get the user's opponent
@@ -77,27 +76,22 @@ def results(**kwargs):
             continue
 
         # get the amount of points each team scored
-        c.execute('select points from home_pointsforweek where (user_id = %s or user_id = %s) and week = %s', (user[0], opponent[0], CURRENT_WEEK))
-        points = c.fetchall()
+        c.execute('select points from home_pointsforweek where (user_id = %s) and week = %s', (user[0], CURRENT_WEEK))
+        user_points = c.fetchone()
 
-        print ('User: {0}-{1} Opponent: {2}-{3}'.format(user[0], points[0], opponent[0], points[1]))
+        c.execute('select points from home_pointsforweek where (user_id = %s) and week = %s', (opponent[0], CURRENT_WEEK))
+        opponent_points = c.fetchone()
 
         # compare points
-        if points[0] > points[1]:
+        if user_points[0] > opponent_points[0]:
             c.execute('update home_record set wins = wins + 1 where user_id = %s', [user[0]])
-            c.execute('update home_record set losses = losses + 1 where user_id = %s', [opponent[0]])
-        elif points[1] > points[0]:
-            c.execute('update home_record set wins = wins + 1 where user_id = %s', [opponent[0]])
+        elif user_points[0] < opponent_points[0]:
             c.execute('update home_record set losses = losses + 1 where user_id = %s', [user[0]])
         else:
-            c.execute('update home_record set ties = ties + 1 where user_id = %s or user_id = %s', [user[0], opponent[0]])
+            c.execute('update home_record set ties = ties + 1 where user_id = %s', [user[0]])
 
-        # remove the already updated opponent from the list
-        for item in users:
-            if opponent[0] == item[0]:
-                users.remove(item)
-
-    #conn.commit()
+    print ('Finished comparing scores')
+    conn.commit()
     c.close()
     conn.close()
 

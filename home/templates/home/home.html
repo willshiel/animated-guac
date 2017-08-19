@@ -9,7 +9,7 @@
             </div>
             <div id="current-opponent">
                 {%  if opponent.team_name != '' %}
-                <p>Your opponent this week: {{ opponent.team_name }}</p>
+                <p>Your opponent this week: TBD</p>
                 {% else %}
                     <p>The schedule has not been set yet</p>
                 {% endif %}
@@ -21,7 +21,7 @@
             </div>
             <hr/>
             <a class="btn btn-primary" href="/picks/picks">Make Picks</a>
-            <a class="btn btn-default" href="#">View Matchup</a>
+            <a class="btn btn-default" href="/home/matchup">View Matchup</a>
             <a class="btn btn-default" href="/registration/logout">Log out</a>
         </div>
     </div>
@@ -36,13 +36,13 @@
                 <th>Losses</th>
                 <th>Ties</th>
             </tr>
-             {% for p in profiles %}
+             {% for record in records %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a href="/profiles/profiles/{{ p.user_id }}">{{ p.team_name }}</a></td>
-                <td>{{ p.record.wins }}</td>
-                <td>{{ p.record.losses }}</td>
-                <td>{{ p.record.ties }}</td>
+                <td><a href="/profiles/profiles/{{ record.profile.user_id }}">{{ record.profile.team_name }}</a></td>
+                <td>{{ record.wins }}</td>
+                <td>{{ record.losses }}</td>
+                <td>{{ record.ties }}</td>
             </tr>
             {% endfor %}
         </table>
