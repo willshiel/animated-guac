@@ -9,7 +9,7 @@
             </div>
             <div id="current-opponent">
                 {%  if opponent.team_name != '' %}
-                <p>Your opponent this week: TBD</p>
+                <p>Your opponent this week: {{ opponent.team_name }}</p>
                 {% else %}
                     <p>The schedule has not been set yet</p>
                 {% endif %}

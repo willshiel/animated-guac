@@ -2,58 +2,54 @@ import psycopg2
 import sys
 
 '''
-    This is a script for generating a schedule for a certain league
-    it is taken from an algorithm called round robin
-    corresponding stack overflow:
-        https://stackoverflow.com/questions/1037057/how-to-automatically-generate-a-sports-league-schedule
+   Algorithm to create a schedule for a ten week season 
 '''
+
 
 def scheduler(**kwargs):
     print ('Connecting to database')
     conn = psycopg2.connect("dbname={0} user={1}".format(kwargs['db_name'], kwargs['user']))
     c = conn.cursor()
-    c.execute('''select au.id from auth_user au
-                inner join home_profile hp
-                on au.id = hp.user_id
-                where hp.league_id = {0}'''.format(kwargs['league_id']))
-    users_tuple = c.fetchall()
-    matchups_by_week = []
-    users = [i[0] for i in users_tuple]
 
-    # create schedule
-    if len(users) % 2 == 1:
-        users.append(-1)
-    for i in range(0, len(users)-1):
+    # get the users in the selected league
+    c.execute('select au.id from auth_user au inner join home_profile hp on au.id = hp.user_id where hp.league_id = 2')
+    users = c.fetchall()
+
+    # list that contains the schedule
+    schedule = []
+
+    # if the team has an odd amount of people add a bye team to the results
+    if len(users) % 2 != 0:
+        users.append((-1, ))
+
+    # create rows for a matchup against a different team each week
+    print ('Generating and inserting rows')
+    for i in range(len(users)-1):
         mid = len(users) / 2
         l1 = users[:mid]
         l2 = users[mid:]
+        l2.reverse()
 
-        # switch sides after each round
+        # Switch sides after each round
         if i % 2 == 1:
-            matchups_by_week = matchups_by_week + [zip(l1, l2)]
+            schedule = [zip(l1, l2)]
         else:
-            matchups_by_week = matchups_by_week + [zip(l2, l1)]
+            schedule = [zip(l2, l1)]
 
         users.insert(1, users.pop())
 
-    # add each matchup to each database, count tracks the week
-    print ('beginning the entries')
-    count = 1
-    for week in matchups_by_week:
-        for matchup in week:
-            sql = "insert into home_schedule (user_id, opponent, week) values (%s, %s, %s)"
-            data = (matchup[0], matchup[1], count)
-            c.execute(sql, data)
-            'You have executed one'
-            data = (matchup[1], matchup[0], count)
-            c.execute(sql, data)
-        count += 1
+        # insert matchups for each pair into the database
+        for list_of_matchups in schedule:
+            for matchup in list_of_matchups:
+                c.execute('insert into home_schedule (user_id, opponent, week) values (%s, %s, %s)', (matchup[0][0], matchup[1][0], i + 1))
+                c.execute('insert into home_schedule (user_id, opponent, week) values (%s, %s, %s)', (matchup[1][0], matchup[0][0], i + 1))
 
-    print ('Your data has been entered')
-
+    print ('Committing changes to the database')
     conn.commit()
+    print ('Closing connections')
     c.close()
     conn.close()
+
 
 def main():
     db_name = sys.argv[1]
