@@ -3,8 +3,10 @@ from django.contrib.auth.models import User
 from django import forms
 from common.current_week import CURRENT_WEEK
 
+
 def team_name_default():
     return {'name', 'place holder name'}
+
 
 class Team(models.Model):
     name = models.CharField(max_length=50, null=False)
@@ -19,7 +21,7 @@ class Game(models.Model):
     away_team_id = models.BigIntegerField()
     away_team_name = models.CharField(max_length=50, default=team_name_default)
     underdog = models.IntegerField(null=True)
-    winning_team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    winning_team = models.ForeignKey(Team, on_delete=models.CASCADE, null=True)
     margin = models.IntegerField(null=True)
     week = models.IntegerField(default=CURRENT_WEEK)
 
@@ -27,6 +29,7 @@ class Game(models.Model):
         home_team = Team.objects.get(pk=self.home_team_id)
         away_team = Team.objects.get(pk=self.away_team_id)
         return home_team.name + ' vs ' + away_team.name
+
 
 class Pick(models.Model):
     team_picked = models.ForeignKey(Team)
