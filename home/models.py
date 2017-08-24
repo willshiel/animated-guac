@@ -6,6 +6,8 @@ from common.current_week import CURRENT_WEEK
 class League(models.Model):
     name = models.CharField(max_length=50, null=False)
     password = models.CharField(max_length=50, null=True, default='password')
+    locked_picks = models.BooleanField(default=False)
+    locked_matchups = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

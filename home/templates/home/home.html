@@ -9,7 +9,7 @@
             </div>
             <div id="current-opponent">
                 {%  if opponent.team_name != '' %}
-                <p>Your opponent this week: {{ opponent.team_name }}</p>
+                    <p>Your opponent this week: {{ opponent.team_name }}</p>
                 {% else %}
                     <p>The schedule has not been set yet</p>
                 {% endif %}
@@ -20,8 +20,20 @@
                 <p>To come in the future</p>
             </div>
             <hr/>
-            <a class="btn btn-primary" href="/picks/picks">Make Picks</a>
-            <a class="btn btn-default" href="/home/matchup">View Matchup</a>
+            <div>
+                <p id="pickError" class="text-danger">Picks are locked for the week</p>
+                <p id="matchupError" class="text-danger">Matchups are locked until the first game begins</p>
+            </div>
+            {% if league.locked_picks %}
+                <a id="viewLockedPicks" class="btn btn-primary" href="#">Make Picks</a>
+            {% else %}
+                <a class="btn btn-primary" href="/picks/picks">Make Picks</a>
+            {% endif %}
+            {% if league.locked_matchups %}
+                <a id="viewLockedMatchup" class="btn btn-default" href="#">View Matchup</a>
+            {% else %}
+                <a class="btn btn-default" href="/home/matchup">View Matchup</a>
+            {% endif %}
             <a class="btn btn-default" href="/registration/logout">Log out</a>
         </div>
     </div>
