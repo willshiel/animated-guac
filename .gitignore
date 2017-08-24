@@ -6,5 +6,4 @@ app.json
 settings.py
 requirements.txt
 
-.idea/inspectionProfiles/
-.idea/workspace.xml
+.idea*
