@@ -4,6 +4,7 @@ from .models import Pick, Game, Team
 from common.current_week import CURRENT_WEEK
 import pdb
 
+
 class PickForm(forms.Form):
     '''
         A form that allows a user to make a pick on the
@@ -16,7 +17,8 @@ class PickForm(forms.Form):
         cd = self.cleaned_data
         team_picked = Team.objects.get(pk=cd['team_picked'])
         margin = cd['margin']
-        pick = Pick(team_picked=team_picked, week=CURRENT_WEEK, user=user, margin=margin)
+        pdb.set_trace()
+        pick = Pick(team_picked=team_picked, week=CURRENT_WEEK, user=user, margin=margin, game=self.game)
         pick.save()
 
 

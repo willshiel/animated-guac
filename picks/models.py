@@ -37,7 +37,7 @@ class Pick(models.Model):
     is_correct = models.NullBooleanField()
     week = models.IntegerField(default=CURRENT_WEEK)
     margin = models.IntegerField()
-    game = models.ForeignKey(Game, on_delete=models.CASCADE, default=10)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, default=18)
 
     def __str__(self):
         return str(self.team_picked) + ' ' + str(self.user) + ' ' + str(self.week)
