@@ -25,7 +25,6 @@ def get_picks(request):
     PickFormSet = formset_factory(PickForm, formset=BasePickFormSet, extra=len(games))
     if request.method == 'POST':
         formset = PickFormSet(request.POST, request.FILES)
-        pdb.set_trace()
         if formset.is_valid():
             for i in range(0, len(formset)):
                 formset[i].game = games[i]

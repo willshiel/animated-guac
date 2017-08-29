@@ -55,12 +55,12 @@ def profile(request):
 def matchup(request):
     # get the picks the user has made as well as the games that are available
     user_picks = Pick.objects.filter(Q(user_id=request.user.id) & Q(week=CURRENT_WEEK)).order_by('id')
-    games = Game.objects.filter(week=CURRENT_WEEK).order_by('id')
 
     # get the user's opponents picks
     opponent = Schedule.objects.get(Q(user_id=request.user.id) & Q(week=CURRENT_WEEK))
     opponent_picks = Pick.objects.filter(Q(user_id=opponent.opponent) & Q(week=CURRENT_WEEK)).order_by('id')
 
-    data = {'user': user_picks, 'games': games, 'opp_picks': opponent_picks}
+    data = {'user': user_picks, 'opp_picks': opponent_picks, 'opp': opponent}
+    pdb.set_trace()
 
     return render(request, 'home/matchup.html', data)

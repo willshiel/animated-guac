@@ -36,8 +36,8 @@ class Record(models.Model):
 
 
 class Schedule(models.Model):
-    user_id = models.BigIntegerField(default=1)
-    opponent = models.BigIntegerField(default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', default=52)
+    opponent = models.ForeignKey(User, on_delete=models.CASCADE, related_name='opponent', default=52)
     week = models.IntegerField(default=1)
 
 
