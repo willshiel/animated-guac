@@ -17,7 +17,6 @@ class PickForm(forms.Form):
         cd = self.cleaned_data
         team_picked = Team.objects.get(pk=cd['team_picked'])
         margin = cd['margin']
-        pdb.set_trace()
         pick = Pick(team_picked=team_picked, week=CURRENT_WEEK, user=user, margin=margin, game=self.game)
         pick.save()
 

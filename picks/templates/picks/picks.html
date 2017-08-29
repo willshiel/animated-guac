@@ -15,6 +15,13 @@
                         {{ formset.non_form_errors }}
                     </div>
                 {% endif %}
+                {% if errors != '' %}
+                    <div class="alert alert-danger">
+                        <p>{{ errors }}</p>
+                    </div>
+                {% endif %}
+                <table class="table">
+
                 <table class="table">
                     <tr>
                         <th>Home Team</th>
@@ -41,7 +48,6 @@
                 </table>
                 <div class="extra-bottom-padding">
                     <input class="btn btn-primary" type="submit" value="Submit Picks"/>
-                    <a class="btn btn-default" href="/home/">Go Home</a>
                     <span class="btn btn-default" id="scoring-popup">Scoring Rules</span>
                 </div>
             </form>

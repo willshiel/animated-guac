@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django import forms
 from django.contrib.auth.decorators import login_required
 from common.current_week import CURRENT_WEEK
+from django.forms import ValidationError
 import pdb
 
 
@@ -21,6 +22,9 @@ def get_picks(request):
     # used to display the games
     games = Game.objects.filter(week=CURRENT_WEEK).order_by('id')
 
+    # show error messages
+    errors = ''
+
     # adds fields to forms and saves
     PickFormSet = formset_factory(PickForm, formset=BasePickFormSet, extra=len(games))
     if request.method == 'POST':
@@ -32,11 +36,15 @@ def get_picks(request):
             profile.has_picked = True
             profile.save()
             return HttpResponseRedirect('/home/')
+        else:
+            errors = 'You have errors in your selections\nYour picks were not saved\nPlease select again'
+            formset = PickFormSet()
+            create_team_picked_field(formset, games)
     else:
         formset = PickFormSet()
         create_team_picked_field(formset, games)
 
-    return render(request, 'picks/picks.html', {'formset': formset, 'games': games})
+    return render(request, 'picks/picks.html', {'formset': formset, 'games': games, 'errors': errors})
 
 
 def create_team_picked_field(formset, games):
