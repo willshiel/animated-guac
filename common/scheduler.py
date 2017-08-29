@@ -20,7 +20,7 @@ def scheduler(**kwargs):
 
     # if the team has an odd amount of people add a bye team to the results
     if len(users) % 2 != 0:
-        users.append((57, ))
+        users.append((52, ))
 
     # create rows for a matchup against a different team each week
     print ('Generating and inserting rows')
