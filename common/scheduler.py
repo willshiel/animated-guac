@@ -20,12 +20,12 @@ def scheduler(**kwargs):
 
     # if the team has an odd amount of people add a bye team to the results
     if len(users) % 2 != 0:
-        users.append((-1, ))
+        users.append((57, ))
 
     # create rows for a matchup against a different team each week
     print ('Generating and inserting rows')
     for i in range(len(users)-1):
-        mid = len(users) / 2
+        mid = int(len(users) / 2)
         l1 = users[:mid]
         l2 = users[mid:]
         l2.reverse()
@@ -41,8 +41,8 @@ def scheduler(**kwargs):
         # insert matchups for each pair into the database
         for list_of_matchups in schedule:
             for matchup in list_of_matchups:
-                c.execute('insert into home_schedule (user_id, opponent, week) values (%s, %s, %s)', (matchup[0][0], matchup[1][0], i + 1))
-                c.execute('insert into home_schedule (user_id, opponent, week) values (%s, %s, %s)', (matchup[1][0], matchup[0][0], i + 1))
+                c.execute('insert into home_schedule (user_id, opponent_id, week) values (%s, %s, %s)', (matchup[0][0], matchup[1][0], i + 1))
+                c.execute('insert into home_schedule (user_id, opponent_id, week) values (%s, %s, %s)', (matchup[1][0], matchup[0][0], i + 1))
 
     print ('Committing changes to the database')
     conn.commit()
