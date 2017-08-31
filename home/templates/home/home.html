@@ -32,7 +32,7 @@
             {% endif %}
             {% if league.locked_matchups %}
                 <a id="viewLockedMatchup" class="btn btn-default" href="#">View Matchup</a>
-            {% elif not u.profile.has_picked %}
+            {% elif not user.profile.has_picked %}
                 <a id="viewMatchupWithoutPicking" class="btn btn-default" href="#">View Matchup</a>
             {% else %}
                 <a class="btn btn-default" href="/home/matchup">View Matchup</a>

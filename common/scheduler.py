@@ -12,7 +12,8 @@ def scheduler(**kwargs):
     c = conn.cursor()
 
     # get the users in the selected league
-    c.execute('select au.id from auth_user au inner join home_profile hp on au.id = hp.user_id where hp.league_id = 2')
+    c.execute('select au.id from auth_user au inner join home_profile hp on au.id = hp.user_id where hp.league_id = %s',
+              [kwargs['league_id']])
     users = c.fetchall()
 
     # list that contains the schedule

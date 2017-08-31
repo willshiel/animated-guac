@@ -5,7 +5,7 @@
         <div class="col-md-6 picks-form">
             {% load home_filters %}
             <div>
-                <h2>Your selections Total Points: </h2>
+                <h2>Your selections Total Points: {{ user_points }} </h2>
             </div>
             <table class="table">
                 <tr>
@@ -23,12 +23,12 @@
                         <td class="text-info">{{ pick.team_picked }}</td>
                         <td class="text-info">{{ pick.margin }}</td>
                         {% if pick.game.winning_team != null %}
-                            <td>{{ pick.game.winning_team }}</td>
+                            <td class="text-success">{{ pick.game.winning_team }}</td>
                         {% else %}
                             <td>Game has not concluded</td>
                         {% endif %}
                         {% if pick.game.margin != null %}
-                            <td>{{ pick.game.margin }}</td>
+                            <td class="text-success">{{ pick.game.margin }}</td>
                         {% else %}
                             <td>Game has not concluded</td>
                         {% endif %}
@@ -39,7 +39,7 @@
         <div class="col-md-6 picks-form">
             {% load home_filters %}
             <div>
-                <h2>Opponent's selections Total Points: </h2>
+                <h2>Opponent's selections Total Points: {{ opponent_points }}</h2>
             </div>
             {% if not opp_picks %}
                 <p>Your opponent has not completed their picks</p>
@@ -60,12 +60,12 @@
                                 <td class="text-info">{{ pick.team_picked }}</td>
                                 <td class="text-info">{{ pick.margin }}</td>
                                 {% if pick.game.winning_team != null %}
-                                    <td>{{ pick.game.winning_team }}</td>
+                                    <td class="text-success">{{ pick.game.winning_team }}</td>
                                 {% else %}
                                     <td>Game has not concluded</td>
                                 {% endif %}
                                 {% if pick.game.margin != null %}
-                                    <td>{{ pick.game.margin }}</td>
+                                    <td class="text-success">{{ pick.game.margin }}</td>
                                 {% else %}
                                     <td>Game has not concluded</td>
                                 {% endif %}
