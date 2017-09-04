@@ -23,12 +23,18 @@
                         <td class="text-info">{{ pick.team_picked }}</td>
                         <td class="text-info">{{ pick.margin }}</td>
                         {% if pick.game.winning_team != null %}
-                            <td class="text-success">{{ pick.game.winning_team }}</td>
+                            {% if pick.is_correct %}
+                                <td class="text-success">{{ pick.game.winning_team }}</td>
+                            {% elif not pick.is_correct %}
+                                <td class="text-danger">{{ pick.game.winning_team }}</td>
+                            {% else %}
+                                <td>{{ pick.game.winning_team }}</td>
+                            {% endif %}
                         {% else %}
                             <td>Game has not concluded</td>
                         {% endif %}
                         {% if pick.game.margin != null %}
-                            <td class="text-success">{{ pick.game.margin }}</td>
+                            <td>{{ pick.game.margin }}</td>
                         {% else %}
                             <td>Game has not concluded</td>
                         {% endif %}
@@ -60,7 +66,13 @@
                                 <td class="text-info">{{ pick.team_picked }}</td>
                                 <td class="text-info">{{ pick.margin }}</td>
                                 {% if pick.game.winning_team != null %}
-                                    <td class="text-success">{{ pick.game.winning_team }}</td>
+                                    {% if pick.is_correct %}
+                                        <td class="text-success">{{ pick.game.winning_team }}</td>
+                                    {% elif not pick.is_correct %}
+                                        <td class="text-danger">{{ pick.game.winning_team }}</td>
+                                    {% else %}
+                                        <td>{{ pick.game.winning_team }}</td>
+                                    {% endif %}
                                 {% else %}
                                     <td>Game has not concluded</td>
                                 {% endif %}
