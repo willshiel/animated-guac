@@ -37,7 +37,7 @@ def get_picks(request):
             profile.save()
             return HttpResponseRedirect('/home/')
         else:
-            errors = 'You have errors in your selections\nYour picks were not saved\nPlease select again'
+            errors = 'You have errors in your selections. Your picks were not saved. Please select again'
             formset = PickFormSet()
             create_team_picked_field(formset, games)
     else:

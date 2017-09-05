@@ -29,27 +29,28 @@
                         <th>Your selection</th>
                         <th>Margin of Victory</th>
                     </tr>
-                {% for game in games %}
-                    <tr>
-                    {% if game.home_team_id == game.underdog %}
-                        <td class="red">{{ game.home_team_name }}</td>
-                        <td>{{ game.away_team_name }}</td>
-                    {% else %}
-                        <td>{{ game.home_team_name }}</td>
-                        <td class="red">{{ game.away_team_name }}</td>
-                    {% endif %}
-                    <div class="form-group">
-                        {{ formset.management_form }}
-                        <td>{{ formset|team_picked:forloop.counter0 }}</td>
-                        <td>{{ formset|margin:forloop.counter0 }}</td>
+                    {% for game in games %}
+                        <tr>
+                        {% if game.home_team_id == game.underdog %}
+                            <td class="red">{{ game.home_team_name }}</td>
+                            <td>{{ game.away_team_name }}</td>
+                        {% else %}
+                            <td>{{ game.home_team_name }}</td>
+                            <td class="red">{{ game.away_team_name }}</td>
+                        {% endif %}
+                        <div class="form-group">
+                            {{ formset.management_form }}
+                            <td class="picks" id="team-picked-{{ game.id }}">{{ formset|team_picked:forloop.counter0 }}</td>
+                            <td class="picks" id="margin-picked-{{ game.id }}">{{ formset|margin:forloop.counter0 }}</td>
+                        </div>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                    <div class="extra-bottom-padding">
+                        <input class="btn btn-primary" type="submit" value="Submit Picks"/>
+                        <span class="btn btn-default" id="scoring-popup">Scoring Rules</span>
                     </div>
-                    </tr>
-                {% endfor %}
                 </table>
-                <div class="extra-bottom-padding">
-                    <input class="btn btn-primary" type="submit" value="Submit Picks"/>
-                    <span class="btn btn-default" id="scoring-popup">Scoring Rules</span>
-                </div>
             </form>
         </div>
     </div>
